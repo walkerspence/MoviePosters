@@ -65,8 +65,9 @@ class ImgProcessor:
         bgr_hex = []
         pad_strip_hex = lambda hex_val: hex_val[2:] if len(hex_val[2:]) == 2 else "0" + hex_val[2:]
 
+        brightness_coefficient = 50;
         for i in range(bgr.size):
-            hex_str = str(hex(bgr.item(i)))
+            hex_str = str(hex(bgr.item(i) + brightness_coefficient))
             bgr_hex += [pad_strip_hex(hex_str)]
 
         rgb_hex = "#" + bgr_hex[2] + bgr_hex[1] + bgr_hex[0]
